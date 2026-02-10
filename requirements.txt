@@ -1,0 +1,8 @@
+streamlit
+pandas
+numpy
+plotly
+pytz
+requests
+ephem
+streamlit-js-eval
