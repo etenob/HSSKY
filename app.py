@@ -115,6 +115,7 @@ with st.sidebar:
     st.divider()
     show_const = st.checkbox("Ver Constelaciones", True)
     show_grid = st.checkbox("Mostrar Grilla", False)
+    show_planets = st.checkbox("Mostrar Planetas", True)
     mag_limit = st.slider("Brillo Límite", 0.0, 6.5, 4.8)
     star_scale = st.slider("Tamaño Estrellas", 1.0, 5.0, 2.5)
     fov = st.slider("Zoom (Ancho)", 20, 180, 110)
@@ -183,7 +184,7 @@ fig.add_trace(go.Scattergl(x=visible_stars['plot_az'], y=visible_stars['alt'], m
                            marker=dict(size=visible_stars['size'], color=visible_stars['color'], opacity=0.9, line=dict(width=0))))
 
 # 3. Planetas (Letra Grande)
-if not df_planets.empty:
+if show_planets and not df_planets.empty:
     fig.add_trace(go.Scatter(x=df_planets['plot_az'], y=df_planets['alt'], mode='markers+text', text="<b>"+df_planets['Nombre']+"</b>", 
                              customdata=df_planets['Nombre'], textposition="top center",
                              marker=dict(size=14, color='#ffd166', line=dict(width=1, color='white')), textfont=dict(color='white', size=16)))
